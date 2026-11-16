@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>கொங்குநாட்டு வணிகம் - சபரீஷ். S</title>
+  <!-- Google Fonts for Rich Tamil Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary-gold: #fbbf24;
+      --accent-orange: #f97316;
+      --accent-pink: #ec4899;
+      --accent-cyan: #22d3ee;
+      --accent-emerald: #34d399;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.22);
+      --text-light: #ffffff;
+      --text-muted: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Noto Sans Tamil', 'Hind Madurai', sans-serif;
+      background: #090d16;
+      color: var(--text-light);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated Floating Bubbles Background */
+    .bubbles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -150px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.04));
+      box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.25), 0 0 20px rgba(56, 189, 248, 0.15);
+      backdrop-filter: blur(2px);
+      animation: riseAndSway linear infinite;
+    }
+
+    @keyframes riseAndSway {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.85);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.75;
+      }
+      50% {
+        transform: translateY(-55vh) translateX(35px) scale(1.05);
+      }
+      85% {
+        opacity: 0.75;
+      }
+      100% {
+        transform: translateY(-120vh) translateX(-30px) scale(0.95);
+        opacity: 0;
+      }
+    }
+
+    /* Top Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.12);
+      z-index: 100;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 9.09%;
+      background: linear-gradient(90deg, #fbbf24, #f97316, #ec4899, #22d3ee);
+      transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.8);
+    }
+
+    /* Presentation Deck Wrapper */
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    /* Individual Slide Styling */
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 36px 56px 84px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.94) translateY(25px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0.65s;
+      background-size: 200% 200%;
+      animation: gradientShift 14s ease infinite;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Unique Rich Gradients for Slides */
+    .bg-slide-1 { background-image: linear-gradient(135deg, #1e1b4b, #4c1d95, #831843, #0f172a); }
+    .bg-slide-2 { background-image: linear-gradient(135deg, #0f172a, #1e3a8a, #312e81, #090d16); }
+    .bg-slide-3 { background-image: linear-gradient(135deg, #064e3b, #0f766e, #1e3a8a, #090d16); }
+    .bg-slide-4 { background-image: linear-gradient(135deg, #1e293b, #0369a1, #1d4ed8, #0f172a); }
+    .bg-slide-5 { background-image: linear-gradient(135deg, #31102f, #701a75, #1e3a8a, #090d16); }
+    .bg-slide-6 { background-image: linear-gradient(135deg, #022c22, #047857, #0e7490, #0f172a); }
+    .bg-slide-7 { background-image: linear-gradient(135deg, #451a03, #9a3412, #78350f, #0f172a); }
+    .bg-slide-8 { background-image: linear-gradient(135deg, #500724, #be185d, #7e22ce, #0f172a); }
+    .bg-slide-9 { background-image: linear-gradient(135deg, #1c1917, #78350f, #b45309, #0f172a); }
+    .bg-slide-10 { background-image: linear-gradient(135deg, #2e1065, #6d28d9, #be123c, #0f172a); }
+    .bg-slide-11 { background-image: linear-gradient(135deg, #0f172a, #4c1d95, #be185d, #b45309); }
+
+    /* Entry Animations triggered when slide becomes active */
+    .slide.active .anim-up {
+      animation: fadeSlideUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .slide.active .anim-pop {
+      animation: popIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .slide.active .anim-left {
+      animation: slideFromLeft 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .slide.active .anim-right {
+      animation: slideFromRight 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.12s !important; opacity: 0; }
+    .delay-2 { animation-delay: 0.24s !important; opacity: 0; }
+    .delay-3 { animation-delay: 0.36s !important; opacity: 0; }
+    .delay-4 { animation-delay: 0.48s !important; opacity: 0; }
+    .delay-5 { animation-delay: 0.60s !important; opacity: 0; }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.75); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideFromLeft {
+      from { opacity: 0; transform: translateX(-45px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideFromRight {
+      from { opacity: 0; transform: translateX(45px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.35); }
+      50% { box-shadow: 0 0 38px rgba(251, 191, 36, 0.75); }
+    }
+
+    .floating-element {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    .spinning-gear {
+      animation: spinSlow 14s linear infinite;
+      transform-origin: center;
+    }
+
+    /* Typography & Layout Components */
+    .slide-inner {
+      width: 100%;
+      max-width: 1180px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: rgba(251, 191, 36, 0.18);
+      border: 1px solid rgba(251, 191, 36, 0.5);
+      color: #fde68a;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .slide-heading {
+      font-size: clamp(1.75rem, 3vw, 2.55rem);
+      font-weight: 800;
+      line-height: 1.25;
+      background: linear-gradient(90deg, #ffffff, #fde68a, #f9a8d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .slide-subheading {
+      font-size: clamp(1rem, 1.35vw, 1.18rem);
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 22px 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px) scale(1.015);
+      border-color: rgba(251, 191, 36, 0.65);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(251, 191, 36, 0.2);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      width: 100%;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .card-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.28), rgba(249, 115, 22, 0.28));
+      border: 1px solid rgba(251, 191, 36, 0.45);
+      color: #fde68a;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fef08a;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: #f1f5f9;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1.06rem;
+      line-height: 1.55;
+      color: #f8fafc;
+    }
+
+    .bullet-list li i {
+      color: #fbbf24;
+      margin-top: 5px;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    /* Hero Slide 1 & 11 Centerpieces */
+    .hero-box {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 42px 48px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(18px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      animation: pulseGlow 4s infinite ease-in-out;
+    }
+
+    .namaste-title {
+      font-size: clamp(3rem, 5.5vw, 4.6rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #fde047, #fb923c, #f472b6, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+    }
+
+    .presenter-tag {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 12px 30px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b, #ec4899);
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.45);
+    }
+
+    /* Visual Illustration Card */
+    .visual-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      border-radius: 24px;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      height: 100%;
+    }
+
+    /* Comparison Table on Slide 10 */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.98rem;
+    }
+
+    .compare-table th {
+      background: rgba(251, 191, 36, 0.22);
+      color: #fde68a;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .compare-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+    }
+
+    /* Bottom Navigation Controls */
+    .nav-controls {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-family: 'Noto Sans Tamil', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: linear-gradient(90deg, #f59e0b, #ec4899);
+      border-color: transparent;
+      transform: scale(1.05);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .slide-counter {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fde68a;
+      min-width: 68px;
+      text-align: center;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 900px) {
+      .slide { padding: 24px 20px 80px 20px; }
+      .grid-2, .grid-3, .split-layout { grid-template-columns: 1fr; gap: 14px; }
+      .visual-showcase { display: none; }
+      .hero-box { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Floating Bubbles Background -->
+  <div class="bubbles-container" id="bubblesContainer"></div>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- Presentation Slides Deck -->
+  <main class="deck" id="deck">
+
+    <!-- SLIDE 1: NAMASTE / WELCOME -->
+    <section class="slide bg-slide-1 active" data-slide="1">
+      <div class="slide-inner">
+        <div class="hero-box anim-pop">
+          <div class="floating-element" style="margin-bottom: 14px;">
+            <!-- Traditional Tamil Greeting Lamp / Kolam SVG Motif -->
+            <svg width="86" height="86" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" stroke="#FBBF24" stroke-width="2" stroke-dasharray="6 4" />
+              <path d="M50 14C56 26 62 32 50 44C38 32 44 26 50 14Z" fill="#F97316" />
+              <path d="M50 22C53 29 56 33 50 40C44 33 47 29 50 22Z" fill="#FDE047" />
+              <path d="M26 48H74L66 62H34L26 48Z" fill="#FBBF24" />
+              <rect x="45" y="62" width="10" height="16" fill="#D97706" />
+              <ellipse cx="50" cy="80" rx="22" ry="5" fill="#FBBF24" />
+            </svg>
+          </div>
+          <div class="badge-pill" style="margin: 0 auto 14px auto;">
+            <i class="fa-solid fa-book-open"></i> எட்டாம் வகுப்பு தமிழ் • இயல் 5
+          </div>
+          <h1 class="namaste-title">வணக்கம்! 🙏</h1>
+          <p style="font-size: 1.45rem; font-weight: 700; color: #f8fafc; margin-bottom: 10px;">
+            வையம்புகழ் வணிகம் — கொங்குநாட்டு வணிகம்
+          </p>
+          <p style="font-size: 1.08rem; color: #cbd5e1; max-width: 650px; margin: 0 auto;">
+            கோயம்புத்தூர் மற்றும் திண்டுக்கல் மாவட்டங்களின் தொழில் மற்றும் வணிகச் சிறப்புகள்
+          </p>
+          <div class="presenter-tag">
+            <i class="fa-solid fa-user-graduate" style="margin-right: 8px;"></i>
+            வழங்குபவர்: சபரீஷ். S (Sabareesh.S)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: KONGUNATTU VANIGAM - INTRO & SUBTOPICS -->
+    <section class="slide bg-slide-2" data-slide="2">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-list-check"></i> பாட அறிமுகம் &amp; துணைத்தலைப்புகள்</div>
+        <h2 class="slide-heading anim-up delay-1">கொங்குநாட்டு வணிகம் — பாடக் கட்டமைப்பு</h2>
+        <p class="slide-subheading anim-up delay-1">
+          பண்டைய சேரர்களின் ஆட்சி முதல் இன்றைய நவீன தொழில் புரட்சி வரை கொங்கு மண்டலத்தின் வணிகப் பயணம்:
+        </p>
+
+        <div class="grid-2">
+          <div class="glass-card anim-up delay-2">
+            <div class="card-icon-box"><i class="fa-solid fa-crown"></i></div>
+            <h3 class="card-title">1. மூவேந்தர் &amp; சேர நாட்டின் எல்லைகள்</h3>
+            <p class="card-text">
+              சேரர்களின் குடநாடு, வஞ்சி மாநகரம் மற்றும் கார்மேகக் கவிஞரின் <em>கொங்கு மண்டல சதகம்</em> கூறும் நான்கு எல்லைகள் (பெரும்பாலை, பழனிமலை, வெள்ளிமலை, மதிற்கரை).
+            </p>
+          </div>
+
+          <div class="glass-card anim-up delay-3">
+            <div class="card-icon-box"><i class="fa-solid fa-ship"></i></div>
+            <h3 class="card-title">2. பழங்காலக் கடல் &amp; உள்நாட்டு வணிகம்</h3>
+            <p class="card-text">
+              முசிறி துறைமுக ஏற்றுமதி (மிளகு, முத்து, தந்தம்), இறக்குமதி (பொன், பவளம்) மற்றும் நெல்லும் உப்பும் சமவிலையாகக் கருதப்பட்ட பண்டமாற்று வணிகம்.
+            </p>
+          </div>
+
+          <div class="glass-card anim-up delay-4">
+            <div class="card-icon-box"><i class="fa-solid fa-industry"></i></div>
+            <h3 class="card-title">3. கோயம்புத்தூர் வணிகச் சிறப்புகள்</h3>
+            <p class="card-text">
+              பஞ்சாலைகள், நூற்பாலைகள், மின்சாரப் பொருள்கள், எந்திரத் தொழிற்சாலைகள் மற்றும் வீட்டு உபயோகப் பொருள்கள் உற்பத்தி.
+            </p>
+          </div>
+
+          <div class="glass-card anim-up delay-5">
+            <div class="card-icon-box"><i class="fa-solid fa-spa"></i></div>
+            <h3 class="card-title">4. திண்டுக்கல் வணிகச் சிறப்புகள்</h3>
+            <p class="card-text">
+              மலர் உற்பத்தி ("தமிழ்நாட்டின் ஹாலந்து"), அரிசி, தோல் பதனிடுதல், உலகப் புகழ்பெற்ற பூட்டுகள் மற்றும் சின்னாளப்பட்டி சுங்குடிச் சேலைகள்.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: COIMBATORE INTRODUCTION -->
+    <section class="slide bg-slide-3" data-slide="3">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-city"></i> கொங்கு மண்டலத்தின் தொழில் தலைநகரம்</div>
+        <h2 class="slide-heading anim-up delay-1">கோயம்புத்தூர் — "தென்னிந்தியாவின் மான்செஸ்டர்"</h2>
+        <p class="slide-subheading anim-up delay-1">
+          பண்டைய 'கோவன்புத்தூர்' இன்று தமிழகத்தின் மிக முக்கியத் தொழில் மற்றும் வணிக மையமாகத் திகழ்கிறது.
+        </p>
+
+        <div class="split-layout">
+          <div class="glass-card anim-left delay-2">
+            <ul class="bullet-list">
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span><strong>பெயர்க்காரணம்:</strong> கோவன் என்னும் தலைவனால் உருவாக்கப்பட்ட ஊர் 'கோவன்புத்தூர்' என அழைக்கப்பட்டு, மருவி 'கோயம்புத்தூர்' ஆனது.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span><strong>வளமான இயற்கை:</strong> நொய்யல் ஆற்றின் வளமும், பருத்தி விளைச்சலுக்கு ஏற்ற கரிசல் மண்ணும் தொழில் வளர்ச்சிக்கு அடித்தளமிட்டன.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span><strong>பன்முகத் தொழில் மையம்:</strong> நெசவுத் தொழில் மட்டுமின்றி எந்திரவியல், மின்னணுவியல் மற்றும் வேளாண் கருவிகள் உற்பத்தியில் முதன்மை வகிக்கிறது.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span><strong>உலகளாவிய ஏற்றுமதி:</strong> இங்கு உற்பத்தியாகும் பொருள்கள் இந்தியா முழுவதும் மற்றும் வெளிநாடுகளுக்கும் ஏற்றுமதி செய்யப்படுகின்றன.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="visual-showcase anim-right delay-3">
+            <div class="floating-element">
+              <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+                <circle cx="80" cy="80" r="72" fill="rgba(251, 191, 36, 0.12)" stroke="#FBBF24" stroke-width="2" />
+                <rect x="34" y="75" width="92" height="50" rx="6" fill="#0EA5E9" />
+                <polygon points="34,75 56,55 56,75" fill="#38BDF8" />
+                <polygon points="56,75 78,55 78,75" fill="#38BDF8" />
+                <polygon points="78,75 100,55 100,75" fill="#38BDF8" />
+                <rect x="108" y="36" width="12" height="39" fill="#F97316" />
+                <circle cx="114" cy="26" r="6" fill="rgba(255,255,255,0.6)" />
+                <circle cx="122" cy="18" r="8" fill="rgba(255,255,255,0.4)" />
+                <rect x="46" y="88" width="14" height="14" rx="2" fill="#FEF08A" />
+                <rect x="72" y="88" width="14" height="14" rx="2" fill="#FEF08A" />
+                <rect x="98" y="88" width="14" height="14" rx="2" fill="#FEF08A" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.3rem; color: #fde68a; margin-top: 14px;">தொழில் வளர்ச்சியின் சிகரம்</h3>
+            <p style="font-size: 0.96rem; color: #e2e8f0; margin-top: 6px;">
+              வேளாண்மையும் நவீனத் தொழிற்சாலைகளும் இணைந்த பொருளாதார மண்டலம்
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: COIMBATORE - COTTON MILLS & SPINNING MILLS -->
+    <section class="slide bg-slide-4" data-slide="4">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-shirt"></i> கோயம்புத்தூர் வணிகம் — பகுதி 1</div>
+        <h2 class="slide-heading anim-up delay-1">பஞ்சாலைகள் &amp; நூற்பாலைகள் (Cotton &amp; Spinning Mills)</h2>
+        <p class="slide-subheading anim-up delay-1">
+          தமிழகத்தின் ஜவுளி மற்றும் நூற்புத் தொழிலின் முதுகெலும்பாக கோயம்புத்தூர் விளங்குகிறது.
+        </p>
+
+        <div class="grid-3">
+          <div class="glass-card anim-up delay-2">
+            <div class="card-icon-box"><i class="fa-solid fa-seedling"></i></div>
+            <h3 class="card-title">பருத்தி சாகுபடி</h3>
+            <p class="card-text">
+              கோயம்புத்தூர் மாவட்டத்தின் கரிசல் மண் பருத்தி விளைச்சலுக்கு மிகவும் ஏற்றது. இதனால் தரமான பஞ்சு உள்ளூரிலேயே தாராளமாகக் கிடைக்கிறது.
+            </p>
+          </div>
+
+          <div class="glass-card anim-up delay-3">
+            <div class="card-icon-box"><i class="fa-solid fa-hurricane"></i></div>
+            <h3 class="card-title">பஞ்சாலைகள் (Cotton Mills)</h3>
+            <p class="card-text">
+              பருத்தியிலிருந்து பஞ்சைப் பிரித்தெடுத்துத் தூய்மைப்படுத்தும் நவீனப் பஞ்சாலைகள் மாவட்டத்தின் பல பகுதிகளில் பெருமளவில் அமைந்துள்ளன.
+            </p>
+          </div>
+
+          <div class="glass-card anim-up delay-4">
+            <div class="card-icon-box"><i class="fa-solid fa-spool"></i></div>
+            <h3 class="card-title">நூற்பாலைகள் (Spinning Mills)</h3>
+            <p class="card-text">
+              பஞ்சிலிருந்து தரமான நூல்களை நூற்கும் நூற்பாலைகள் அதிகம் உள்ளதால், கோவை "தென்னிந்தியாவின் மான்செஸ்டர்" எனப் போற்றப்படுகிறது.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card anim-up delay-5" style="margin-top: 20px; display: flex; align-items: center; gap: 18px; padding: 16px 24px;">
+          <i class="fa-solid fa-award" style="font-size: 2rem; color: #fbbf24;"></i>
+          <p style="font-size: 1.05rem; color: #f8fafc;">
+            <strong>சிறப்புத் தகவல்:</strong> கோயம்புத்தூர் நூற்பாலைகளில் உற்பத்தியாகும் பருத்தி நூல்கள் திருப்பூர், ஈரோடு, கரூர் ஆகிய நகரங்களின் பின்னலாடை மற்றும் கைத்தறித் தொழில்களுக்கு மூலப்பொருளாகப் பயன்படுகின்றன.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: COIMBATORE - ELECTRICAL GOODS & MACHINERY -->
+    <section class="slide bg-slide-5" data-slide="5">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-gears"></i> கோயம்புத்தூர் வணிகம் — பகுதி 2</div>
+        <h2 class="slide-heading anim-up delay-1">மின்சாரப் பொருள்கள் &amp; எந்திரத் தொழிற்சாலைகள்</h2>
+        <p class="slide-subheading anim-up delay-1">
+          இந்தியாவின் பொறியியல் மற்றும் நீரேற்றி (Motor &amp; Pump) உற்பத்தியில் கோயம்புத்தூர் முதலிடம் வகிக்கிறது.
+        </p>
+
+        <div class="split-layout">
+          <div class="grid-2" style="grid-template-columns: 1fr; gap: 18px;">
+            <div class="glass-card anim-left delay-2">
+              <h3 class="card-title"><i class="fa-solid fa-bolt" style="margin-right: 8px; color: #38bdf8;"></i> மின்சாரப் பொருள்கள் (Electrical Goods)</h3>
+              <p class="card-text">
+                வேளாண்மைக்கும் தொழிற்சாலைகளுக்கும் தேவையான மின்மோட்டார்கள் (Electric Motors), நீரேற்றிப் பம்புகள் (Pump Sets), மின்மாற்றிகள் மற்றும் மின்சாதனப் பொருள்கள் இங்கு அதிகளவில் தயாரிக்கப்படுகின்றன.
+              </p>
+            </div>
+
+            <div class="glass-card anim-left delay-3">
+              <h3 class="card-title"><i class="fa-solid fa-cogs" style="margin-right: 8px; color: #fbbf24;"></i> எந்திரத் தொழிற்சாலைகள் (Machinery Industries)</h3>
+              <p class="card-text">
+                நூற்பாலை எந்திரங்கள், வார்ப்படத் தொழிற்சாலைகள் (Foundries), வாகன உதிரிபாகங்கள் மற்றும் கனரகத் தொழிற்சாலை எந்திரங்கள் உற்பத்தி செய்யப்பட்டு நாடெங்கும் அனுப்பப்படுகின்றன.
+              </p>
+            </div>
+          </div>
+
+          <div class="visual-showcase anim-right delay-3">
+            <svg width="170" height="170" viewBox="0 0 170 170" fill="none">
+              <g class="spinning-gear">
+                <circle cx="85" cy="85" r="42" stroke="#FBBF24" stroke-width="12" stroke-dasharray="14 10" />
+                <circle cx="85" cy="85" r="24" fill="rgba(251, 191, 36, 0.25)" stroke="#FDE047" stroke-width="4" />
+                <circle cx="85" cy="85" r="8" fill="#F97316" />
+              </g>
+              <path d="M128 28L114 54H130L118 82" stroke="#38BDF8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <h3 style="font-size: 1.25rem; color: #fde68a; margin-top: 12px;">பொறியியல் வல்லமை</h3>
+            <p style="font-size: 0.95rem; color: #e2e8f0; margin-top: 6px;">
+              இந்தியாவின் நீரேற்றிப் பம்புகள் தேவையில் பெரும்பகுதியை கோவை பூர்த்தி செய்கிறது.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: COIMBATORE - HOUSEHOLD APPLIANCES -->
+    <section class="slide bg-slide-6" data-slide="6">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-blender"></i> கோயம்புத்தூர் வணிகம் — பகுதி 3</div>
+        <h2 class="slide-heading anim-up delay-1">வீட்டு உபயோகப் பொருள்கள் உற்பத்தி</h2>
+        <p class="slide-subheading anim-up delay-1">
+          ஒவ்வொரு இல்லத்திலும் பயன்படும் நவீன சமையலறை மற்றும் வீட்டு உபயோகக் கருவிகளின் பிறப்பிடம் கோவை.
+        </p>
+
+        <div class="grid-3">
+          <div class="glass-card anim-up delay-2">
+            <div class="card-icon-box"><i class="fa-solid fa-compact-disc"></i></div>
+            <h3 class="card-title">மாவு அரைக்கும் எந்திரங்கள்</h3>
+            <p class="card-text">
+              புவிசார் குறியீடு (GI Tag) பெற்ற கோயம்புத்தூர் <strong>வெட் கிரைண்டர்கள் (Wet Grinders)</strong> உலக அளவில் புகழ்பெற்றவை.
+            </p>
+          </div>
+
+          <div class="glass-card anim-up delay-3">
+            <div class="card-icon-box"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+            <h3 class="card-title">சமையலறை மின்சாதனங்கள்</h3>
+            <p class="card-text">
+              மிக்சிகள் (Mixers), மின் அடுப்புகள், நீர் சூடேற்றிகள் மற்றும் நவீன வீட்டு உபயோகப் பொருள்கள் தரமாகத் தயாரிக்கப்படுகின்றன.
+            </p>
+          </div>
+
+          <div class="glass-card anim-up delay-4">
+            <div class="card-icon-box"><i class="fa-solid fa-truck-plane"></i></div>
+            <h3 class="card-title">உள்நாட்டு &amp; வெளிநாட்டு வணிகம்</h3>
+            <p class="card-text">
+              இங்கு தயாரிக்கப்படும் வீட்டு உபயோகப் பொருள்கள் இந்தியாவின் அனைத்து மாநிலங்களுக்கும், வெளிநாடுகளுக்கும் ஏற்றுமதி ஆகின்றன.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card anim-up delay-5" style="margin-top: 20px; text-align: center; background: rgba(251, 191, 36, 0.12);">
+          <p style="font-size: 1.08rem; color: #fef08a; font-weight: 600;">
+            ✨ பஞ்சாலைகள் + நூற்பாலைகள் + மின்சாரப் பொருள்கள் + எந்திரங்கள் + வீட்டு உபயோகப் பொருள்கள் = கோவையின் பொருளாதார வலிமை!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: DINDIGUL - INTRO & RICE PRODUCTION -->
+    <section class="slide bg-slide-7" data-slide="7">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-wheat-awn"></i> வரலாற்றுச் சிறப்புமிக்க வணிக நகரம்</div>
+        <h2 class="slide-heading anim-up delay-1">திண்டுக்கல் — அறிமுகம் &amp; அரிசி வணிகம்</h2>
+        <p class="slide-subheading anim-up delay-1">
+          வரலாற்றுச் சிறப்புமிக்க மலைக்கோட்டையையும் வளமான வேளாண் மற்றும் கைத்தொழில் வணிகத்தையும் கொண்ட மாவட்டம்.
+        </p>
+
+        <div class="split-layout">
+          <div class="glass-card anim-left delay-2">
+            <ul class="bullet-list">
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span><strong>வரலாற்றுப் பின்னணி:</strong> சங்க காலம் முதலே கொங்கு மண்டலத்தின் தெற்கு எல்லையாகவும் முக்கிய வணிகப் பாதையாகவும் திண்டுக்கல் திகழ்கிறது.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span><strong>நெல் &amp; அரிசி உற்பத்தி:</strong> வளமான நீர்ப்பாசன வசதியால் நெல் சாகுபடி சிறப்பாக நடைபெறுகிறது. தரமான <strong>அரிசி உற்பத்தி மற்றும் அரிசி ஆலைகள்</strong> இங்கு அதிகம்.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span><strong>முக்கிய உணவுப் பொருள் சந்தை:</strong> திண்டுக்கல் மற்றும் ஒட்டன்சத்திரம் பகுதிகள் காய்கறிகள், தானியங்கள் மற்றும் அரிசி வணிகத்தின் முக்கிய மையங்களாகும்.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="visual-showcase anim-right delay-3">
+            <div class="floating-element">
+              <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+                <circle cx="80" cy="80" r="72" fill="rgba(251, 191, 36, 0.14)" stroke="#FBBF24" stroke-width="2" />
+                <path d="M80 125V40" stroke="#FDE047" stroke-width="5" stroke-linecap="round" />
+                <ellipse cx="66" cy="55" rx="12" ry="6" transform="rotate(-35 66 55)" fill="#FBBF24" />
+                <ellipse cx="94" cy="55" rx="12" ry="6" transform="rotate(35 94 55)" fill="#FBBF24" />
+                <ellipse cx="64" cy="76" rx="13" ry="6" transform="rotate(-35 64 76)" fill="#F59E0B" />
+                <ellipse cx="96" cy="76" rx="13" ry="6" transform="rotate(35 96 76)" fill="#F59E0B" />
+                <ellipse cx="64" cy="98" rx="13" ry="6" transform="rotate(-35 64 98)" fill="#D97706" />
+                <ellipse cx="96" cy="98" rx="13" ry="6" transform="rotate(35 96 98)" fill="#D97706" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: #fde68a; margin-top: 12px;">வளமான அரிசி உற்பத்தி</h3>
+            <p style="font-size: 0.95rem; color: #e2e8f0; margin-top: 6px;">
+              நெல் சாகுபடியும் நவீன அரிசி ஆலைகளும் திண்டுக்கல்லின் பொருளாதாரத்திற்கு வலு சேர்க்கின்றன.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: DINDIGUL - FLOWER PRODUCTION ("HOLLAND OF TAMIL NADU") -->
+    <section class="slide bg-slide-8" data-slide="8">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-fan"></i> திண்டுக்கல் வணிகம் — பகுதி 1</div>
+        <h2 class="slide-heading anim-up delay-1">மலர் உற்பத்தி — "தமிழ்நாட்டின் ஹாலந்து"</h2>
+        <p class="slide-subheading anim-up delay-1">
+          மலர் சாகுபடியிலும் ஏற்றுமதியிலும் தமிழ்நாட்டிலேயே முதலிடம் வகிக்கும் பெருமை திண்டுக்கல்லுக்கு உண்டு.
+        </p>
+
+        <div class="split-layout">
+          <div class="grid-2" style="grid-template-columns: 1fr; gap: 18px;">
+            <div class="glass-card anim-left delay-2">
+              <h3 class="card-title"><i class="fa-solid fa-crown" style="margin-right: 8px; color: #f472b6;"></i> தமிழ்நாட்டின் ஹாலந்து (Holland of Tamil Nadu)</h3>
+              <p class="card-text">
+                உலக அளவில் மலர் உற்பத்திக்குப் புகழ்பெற்ற 'ஹாலந்து' நாட்டைப் போல, தமிழகத்தில் மிக அதிக அளவில் மலர்கள் உற்பத்தி செய்யப்படுவதால் திண்டுக்கல் <strong>"தமிழ்நாட்டின் ஹாலந்து"</strong> என அழைக்கப்படுகிறது.
+              </p>
+            </div>
+
+            <div class="glass-card anim-left delay-3">
+              <h3 class="card-title"><i class="fa-solid fa-seedling" style="margin-right: 8px; color: #34d399;"></i> பலவகை மலர்கள் &amp; ஏற்றுமதி</h3>
+              <p class="card-text">
+                மல்லிகை, முல்லை, சாமந்தி, ரோஜா, கனகாம்பரம் உள்ளிட்ட பலவகை மலர்கள் நிலக்கோட்டை மற்றும் திண்டுக்கல் பகுதிகளில் பயிரிடப்பட்டு வெளிமாநிலங்களுக்கும் வெளிநாடுகளுக்கும் ஏற்றுமதி செய்யப்படுகின்றன.
+              </p>
+            </div>
+          </div>
+
+          <div class="visual-showcase anim-right delay-3">
+            <div class="floating-element">
+              <!-- Vibrant Flower SVG -->
+              <svg width="165" height="165" viewBox="0 0 165 165" fill="none">
+                <circle cx="82" cy="82" r="74" fill="rgba(244, 114, 182, 0.14)" stroke="#F472B6" stroke-width="2" />
+                <circle cx="82" cy="48" r="20" fill="#F472B6" />
+                <circle cx="114" cy="72" r="20" fill="#EC4899" />
+                <circle cx="102" cy="110" r="20" fill="#F472B6" />
+                <circle cx="62" cy="110" r="20" fill="#EC4899" />
+                <circle cx="50" cy="72" r="20" fill="#F472B6" />
+                <circle cx="82" cy="82" r="18" fill="#FDE047" />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: #fbcfe8; margin-top: 12px;">மலர் உற்பத்தியில் முதலிடம்</h3>
+            <p style="font-size: 0.95rem; color: #f1f5f9; margin-top: 6px;">
+              நறுமணத் திரவியங்கள் (Perfumes) தயாரிப்பிலும் திண்டுக்கல் மலர்கள் முக்கியப் பங்கு வகிக்கின்றன.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: DINDIGUL - LOCKS & LEATHER INDUSTRIES -->
+    <section class="slide bg-slide-9" data-slide="9">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-lock"></i> திண்டுக்கல் வணிகம் — பகுதி 2</div>
+        <h2 class="slide-heading anim-up delay-1">திண்டுக்கல் பூட்டு &amp; தோல் தொழிற்சாலைகள்</h2>
+        <p class="slide-subheading anim-up delay-1">
+          உறுதிக்கும் பாதுகாப்பிற்கும் பெயர்பெற்ற கைவினைப் பூட்டுகளும், உலகத் தரத்திலான தோல் பதனிடுதலும்.
+        </p>
+
+        <div class="grid-2">
+          <div class="glass-card anim-left delay-2">
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div class="card-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-key"></i></div>
+              <h3 class="card-title" style="margin-bottom: 0; font-size: 1.35rem;">உலகப் புகழ்பெற்ற திண்டுக்கல் பூட்டுகள்</h3>
+            </div>
+            <ul class="bullet-list">
+              <li>
+                <i class="fa-solid fa-shield-halved"></i>
+                <span><strong>தனித்துவக் கலைத்திறன்:</strong> இரும்பு மற்றும் பித்தளையால் கைவினைஞர்களால் நுணுக்கமாகத் தயாரிக்கப்படும் திண்டுக்கல் பூட்டுகள் மிகுந்த உறுதி கொண்டவை.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-certificate"></i>
+                <span><strong>புவிசார் குறியீடு:</strong> இதன் தனித்தன்மைக்காக 'திண்டுக்கல் பூட்டு' புவிசார் குறியீடு (GI Tag) பெற்றுள்ளது.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-globe"></i>
+                <span><strong>பரவலான பயன்பாடு:</strong> கோயில்கள், வங்கிகள், அரசு அலுவலகங்கள் மற்றும் வீடுகளில் பாதுகாப்பிற்காகப் பெரிதும் விரும்பப்படுகின்றன.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass-card anim-right delay-3">
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div class="card-icon-box" style="margin-bottom: 0;"><i class="fa-solid fa-briefcase"></i></div>
+              <h3 class="card-title" style="margin-bottom: 0; font-size: 1.35rem;">தோல் பதனிடும் தொழிற்சாலைகள்</h3>
+            </div>
+            <ul class="bullet-list">
+              <li>
+                <i class="fa-solid fa-industry"></i>
+                <span><strong>தோல் பதனிடுதல் (Leather Tanning):</strong> திண்டுக்கல் நகரைச் சுற்றி ஏராளமான தோல் பதனிடும் தொழிற்சாலைகள் செயல்பட்டு வருகின்றன.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-shoe-prints"></i>
+                <span><strong>தோல் பொருள்கள்:</strong> பதனிடப்பட்ட தோலிலிருந்து காலணிகள், கைப்பைகள், இடுப்புப் பட்டைகள் (Belts) ஆகியவை தயாரிக்கப்படுகின்றன.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-plane-departure"></i>
+                <span><strong>அந்நியச் செலாவணி:</strong> இங்கு உற்பத்தியாகும் தோல் பொருள்கள் ஐரோப்பிய மற்றும் ஆசிய நாடுகளுக்கு ஏற்றுமதி செய்யப்படுகின்றன.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: CHINNALAPATTI SUNGUDI SAREES & SUMMARY COMPARISON -->
+    <section class="slide bg-slide-10" data-slide="10">
+      <div class="slide-inner">
+        <div class="badge-pill anim-up"><i class="fa-solid fa-gem"></i> பாரம்பரிய நெசவு &amp; ஒப்பீட்டுத் தொகுப்பு</div>
+        <h2 class="slide-heading anim-up delay-1">சின்னாளப்பட்டி சுங்குடிச் சேலைகள் &amp; தொகுப்பு</h2>
+
+        <div class="glass-card anim-up delay-2" style="margin-bottom: 18px; display: flex; align-items: center; gap: 20px;">
+          <div class="card-icon-box" style="margin-bottom: 0; width: 64px; height: 64px; flex-shrink: 0;">
+            <i class="fa-solid fa-vest-patches" style="font-size: 1.8rem;"></i>
+          </div>
+          <div>
+            <h3 class="card-title" style="font-size: 1.3rem;">சின்னாளப்பட்டி சுங்குடிச் சேலைகள் (Chinnalapatti Sungudi Sarees)</h3>
+            <p class="card-text">
+              திண்டுக்கல் மாவட்டத்திலுள்ள <strong>சின்னாளப்பட்டி</strong> என்ற ஊரில் தயாரிக்கப்படும் 'சுங்குடிச் சேலைகள்' மென்மைக்கும், கண்கவர் வண்ணங்களுக்கும், பாரம்பரிய முடிச்சு சாயக் கலைக்கும் (Tie &amp; Dye) உலகப் புகழ்பெற்றவை.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card anim-up delay-3" style="padding: 18px 22px;">
+          <h3 class="card-title" style="margin-bottom: 6px;"><i class="fa-solid fa-scale-balanced" style="margin-right: 8px;"></i> இரு மாவட்டங்களின் வணிகச் சிறப்புகள் — ஒப்பீடு</h3>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>மாவட்டம்</th>
+                <th>சிறப்புப் பெயர்</th>
+                <th>முக்கியத் தொழில்கள் &amp; உற்பத்திப் பொருள்கள்</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>கோயம்புத்தூர்</strong></td>
+                <td>தென்னிந்தியாவின் மான்செஸ்டர்</td>
+                <td>பஞ்சாலைகள், நூற்பாலைகள், மின்சாரப் பொருள்கள், எந்திரத் தொழிற்சாலைகள், வீட்டு உபயோகப் பொருள்கள்</td>
+              </tr>
+              <tr>
+                <td><strong>திண்டுக்கல்</strong></td>
+                <td>தமிழ்நாட்டின் ஹாலந்து</td>
+                <td>மலர் உற்பத்தி, அரிசி, தோல் பதனிடுதல், திண்டுக்கல் பூட்டுகள், சின்னாளப்பட்டி சுங்குடிச் சேலைகள்</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: THANK YOU (NANDRI) -->
+    <section class="slide bg-slide-11" data-slide="11">
+      <div class="slide-inner">
+        <div class="hero-box anim-pop">
+          <div class="floating-element" style="margin-bottom: 14px;">
+            <svg width="84" height="84" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="45" fill="rgba(251, 191, 36, 0.16)" stroke="#FBBF24" stroke-width="2.5" />
+              <path d="M50 22L57 41H77L61 53L67 72L50 60L33 72L39 53L23 41H43L50 22Z" fill="#FDE047" />
+            </svg>
+          </div>
+          <div class="badge-pill" style="margin: 0 auto 14px auto;">
+            <i class="fa-solid fa-heart"></i> கொங்கு மண்டலத்தின் பெருமை
+          </div>
+          <h1 class="namaste-title">நன்றி! வணக்கம்! 🙏</h1>
+          <p style="font-size: 1.25rem; color: #f8fafc; max-width: 680px; margin: 0 auto 16px auto; line-height: 1.6;">
+            உழவும் கைத்தொழிலும் வணிகமும் இணைந்து கொங்கு நாட்டை வையம்புகழ் வணிக மையமாக உயர்த்தியுள்ளன!
+          </p>
+          <div class="presenter-tag">
+            <i class="fa-solid fa-user-check" style="margin-right: 8px;"></i>
+            தயாரிப்பு &amp; வழங்குபவர்: சபரீஷ். S (Sabareesh.S)
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="nav-controls" aria-label="Slide Navigation">
+    <button class="nav-btn" id="prevBtn" title="முந்தைய பக்கம் (Left Arrow)">
+      <i class="fa-solid fa-chevron-left"></i> முந்தையது
+    </button>
+    <span class="slide-counter" id="slideCounter">1 / 11</span>
+    <button class="nav-btn" id="nextBtn" title="அடுத்த பக்கம் (Right Arrow / Space)">
+      அடுத்தது <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <button class="nav-btn" id="fullscreenBtn" title="முழுத்திரை (Fullscreen)">
+      <i class="fa-solid fa-expand"></i>
+    </button>
+  </nav>
+
+  <script>
+    // Generate Continuous Floating Bubbles Across Background
+    (function createBubbles() {
+      const container = document.getElementById('bubblesContainer');
+      const bubbleCount = 34;
+
+      for (let i = 0; i < bubbleCount; i++) {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+
+        const size = Math.floor(Math.random() * 75) + 18; // 18px to 93px
+        const leftPos = Math.random() * 100; // 0% to 100%
+        const duration = (Math.random() * 12) + 9; // 9s to 21s
+        const delay = Math.random() * 12; // 0s to 12s
+
+        // Subtle colorful tint variation for bubbles
+        const colors = [
+          'rgba(251, 191, 36, 0.22)',
+          'rgba(56, 189, 248, 0.22)',
+          'rgba(244, 114, 182, 0.22)',
+          'rgba(52, 211, 153, 0.22)',
+          'rgba(255, 255, 255, 0.24)'
+        ];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${leftPos}%`;
+        bubble.style.animationDuration = `${duration}s`;
+        bubble.style.animationDelay = `${delay}s`;
+        bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), ${randomColor})`;
+
+        container.appendChild(bubble);
+      }
+    })();
+
+    // Slide Deck Controller
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideCounter = document.getElementById('slideCounter');
+    const progressBar = document.getElementById('progressBar');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function updateSlides(index) {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+      progressBar.style.width = `${((index + 1) / totalSlides) * 100}%`;
+
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === totalSlides - 1;
+    }
+
+    function goNext() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlides(currentSlide);
+      }
+    }
+
+    function goPrev() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlides(currentSlide);
+      }
+    }
+
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
+
+    // Keyboard navigation (ArrowRight, ArrowLeft, Space)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        goNext();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goPrev();
+      }
+    });
+
+    // Touch swipe support for mobile/tablet
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) goNext();
+      if (touchEndX - touchStartX > 50) goPrev();
+    });
+
+    // Fullscreen Toggle
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+        fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i>';
+      } else {
+        document.exitFullscreen().catch(() => {});
+        fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand"></i>';
+      }
+    });
+
+    // Initialize first slide
+    updateSlides(0);
+  </script>
+</body>
+</html>
